@@ -1,0 +1,10 @@
+<header>
+  <h3>{{title}}</h3>
+  <app-button color="red" text="Add" (btnOutput)="toggleBtn()"></app-button>
+
+  <div class="container" *ngFor="let employee of getEmployee">
+  <h3>Name: {{employee.name}}</h3>
+  <h3>Job Title: {{employee.jobTitle}}</h3>
+  <h3>Phn No: {{employee.phnNo}}</h3>
+  </div>
+</header>
