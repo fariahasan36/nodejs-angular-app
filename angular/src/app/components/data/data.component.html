@@ -2,9 +2,16 @@
   <h3>{{title}}</h3>
   <app-button color="red" text="Add" (btnOutput)="toggleBtn()"></app-button>
 
-  <div class="container" *ngFor="let employee of getEmployee">
-  <h3>Name: {{employee.name}}</h3>
-  <h3>Job Title: {{employee.jobTitle}}</h3>
-  <h3>Phn No: {{employee.phnNo}}</h3>
+  <div class="container" *ngIf="isLoading">
+
+    <div *ngFor="let book of getBook">
+
+      <h3>ID: {{ book.ID }} </h3>
+      <h3>TITLE: {{book.TITLE}}</h3>
+      <h3>PRICE: {{book.PRICE}}</h3>
+      <h3>AUTHOR: {{book.AUTHOR}}</h3>
+
+    </div>
+
   </div>
 </header>

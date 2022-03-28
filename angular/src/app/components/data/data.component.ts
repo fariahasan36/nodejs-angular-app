@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { GetEmployeeService} from "../../services/get-employee.service";
+import {Component, OnInit} from '@angular/core';
+import {GetBookService} from "../../services/get-book.service";
 
 @Component({
   selector: 'app-data',
@@ -9,20 +9,25 @@ import { GetEmployeeService} from "../../services/get-employee.service";
 
 export class DataComponent implements OnInit {
 
+  isLoading: boolean = false;
   title: string = "Data works!!";
-  getEmployee : any;
+  getBook: any;
 
-  constructor(private getService: GetEmployeeService) {
+  constructor(private getService: GetBookService) {
   }
 
-  toggleBtn(){
-    // this.getEmployee = this.getService.getData();
-    // this.getService.getData().subscribe((res) => this.getEmployee = res.data)
-    this.getService.getData().subscribe((res) => this.getEmployee = res.data)
+  toggleBtn() {
+
+    this.isLoading = true;
+    this.getService.getDataPost().subscribe((response) => {
+      if (response && response['success'] && response['data'] ) {
+        this.getBook = response['data']['P_OUTPUT'];
+      }
+    });
   }
 
   ngOnInit(): void {
-    // this.getService.getData().subscribe((res) => this.getEmployee = res.data)
-    // this.getService.getData().subscribe((res) => this.getEmployee = res.data)
+    // this.getService.getData().subscribe((res) => this.getBook = res.data)
+    // this.getService.getData().subscribe((res) => this.getBook = res.data)
   }
 }
